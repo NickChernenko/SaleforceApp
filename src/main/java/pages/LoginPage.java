@@ -1,44 +1,48 @@
 package pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import properties_reader.PropertyReader;
-
-import java.io.IOException;
 
 
 public class LoginPage {
-    @FindBy(xpath = "//input[@type='email']")
-    WebElement username;
 
-    @FindBy(id = "password")
-    WebElement password;
-
-    @FindBy(name = "Login")
-    WebElement loginButton;
+    private WebDriver driver;
 
 
-    public void enterUsername() throws IOException {
+    private final By username = By.xpath("//input[@type='email']");
+    private final By password = By.id("password");
+    private final By loginButton = By.name("Login");
+    private final By loginError = By.xpath(("//*[text()[contains(.,'Please ')]]"));
 
-        username.sendKeys(PropertyReader.appConfigReader("app_userName"));
+
+    // TODO: 22.12.2021 Create method which will return text of login error. Fix null pointer exception
+
+
+    public LoginPage(WebDriver driverToSet) {
+        this.driver = driverToSet;
+    }
+
+    private WebElement $(By by) {
+        return driver.findElement(by);
+    }
+
+
+    public void enterPassword(String s) {
+        $(password).sendKeys(s);
 
     }
 
-    public void enterPassword() throws IOException {
-        password.sendKeys(PropertyReader.appConfigReader("app_password"));
 
+    public void enterUsername(String s) {
+        $(username).sendKeys(s);
     }
+
 
     public void login() {
-        loginButton.click();
+        $(loginButton).click();
+
     }
 
-    public void enterInvalidPassword() throws IOException {
-        password.sendKeys(PropertyReader.appConfigReader("invalid_password"));
-    }
-
-    public void enterInvalidUsername() throws IOException {
-        username.sendKeys(PropertyReader.appConfigReader("invalid_username"));
-    }
 
 }

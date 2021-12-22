@@ -10,7 +10,7 @@ public class PropertyReader {
 
     public static String appConfigReader(String key) throws IOException {
 
-        File f = new File("src/ApplicationProperties/appConfig.properties");
+        File f = new File("src/application_properties/app_config.properties");
         Properties properties;
         FileReader fr = new FileReader(f);
         properties = new Properties();
