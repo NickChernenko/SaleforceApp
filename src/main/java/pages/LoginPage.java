@@ -13,21 +13,25 @@ public class LoginPage extends BasePage {
 
 
     public void enterUsername(String s) {
+
         $(username).sendKeys(s);
     }
 
     public void enterPassword(String s) {
+
         $(password).sendKeys(s);
 
     }
 
 
     public void login() {
+
         $(loginButton).click();
 
     }
 
     public String getLoginErrorText() {
+
         return $(loginError).getText();
     }
 }

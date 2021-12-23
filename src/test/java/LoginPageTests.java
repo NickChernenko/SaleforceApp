@@ -1,17 +1,12 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HomePage;
 import pages.LoginPage;
 import properties_reader.PropertyReader;
 
 import java.io.IOException;
-import java.time.Duration;
 
-public class TC_001 extends BaseTest {
+public class LoginPageTests extends BaseTest {
 
     @Test
     public void tc_001() {
@@ -26,13 +21,17 @@ public class TC_001 extends BaseTest {
 
     }
 
+
     @Test
-    public void tc_002() throws IOException {
+    public void tc_002() throws IOException{
 
         LoginPage loginPage = new LoginPage();
-        loginPage.enterUsername(PropertyReader.appConfigReader("app_userName"));
-        loginPage.enterUsername(PropertyReader.appConfigReader("app_password"));
 
+        loginPage.enterUsername(PropertyReader.appConfigReader("app_userName"));
+        loginPage.enterPassword(PropertyReader.appConfigReader("app_password"));
+        loginPage.login();
+        boolean successfulLogin = HomePage.loggedIn();
+        Assert.assertTrue(successfulLogin);
 
 
     }
