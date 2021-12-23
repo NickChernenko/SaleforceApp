@@ -16,8 +16,9 @@ public class DriverManager {
 
     @BeforeMethod
     public static void setupClass() throws IOException {
+
         WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
         driver.get(PropertyReader.appConfigReader("Application_URL"));
     }
 

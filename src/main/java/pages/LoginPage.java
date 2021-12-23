@@ -5,9 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 
-public class LoginPage {
+public class LoginPage extends BasePage {
 
-    private WebDriver driver;
+    public WebDriver driver;
 
 
     private final By username = By.xpath("//input[@type='email']");
@@ -16,33 +16,53 @@ public class LoginPage {
     private final By loginError = By.xpath(("//*[text()[contains(.,'Please ')]]"));
 
 
-    // TODO: 22.12.2021 Create method which will return text of login error. Fix null pointer exception
+    public By getUsername() {
+        return username;
+    }
 
+
+    public By getPassword() {
+        return password;
+    }
+
+
+    public By getLoginButton() {
+        return loginButton;
+    }
+
+    public By getLoginError() {
+        return loginError;
+    }
 
     public LoginPage(WebDriver driverToSet) {
+        super();
         this.driver = driverToSet;
     }
 
-    private WebElement $(By by) {
+    @Override
+    protected WebElement $(By by) {
         return driver.findElement(by);
     }
 
 
     public void enterPassword(String s) {
-        $(password).sendKeys(s);
+        $(getPassword()).sendKeys(s);
 
     }
 
 
+
+
     public void enterUsername(String s) {
-        $(username).sendKeys(s);
+        $(getUsername()).sendKeys(s);
     }
 
 
     public void login() {
-        $(loginButton).click();
+        $(getLoginButton()).click();
 
     }
-
-
+    public String getLoginErrorText() {
+        return $(getLoginError()).getText();
+    }
 }

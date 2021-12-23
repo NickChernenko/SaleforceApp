@@ -6,19 +6,19 @@ import org.openqa.selenium.WebElement;
 
 public class HomePage {
 
-    private  WebDriver driver;
+    private WebDriver driver;
     private static By profileTab = By.xpath("//img[@title='User']");
+
+    public HomePage(WebDriver driverToSet) {
+        this.driver = driverToSet;
+    }
 
     private WebElement $(By by) {
         return driver.findElement(by);
     }
 
 
-    public HomePage(WebDriver driverToSet) {
-        this.driver = driverToSet;
-    }
-
-    public  boolean loggedIn() {
+    public boolean loggedIn() {
         if ($(profileTab).isDisplayed()) {
             return true;
         } else {
