@@ -1,15 +1,16 @@
 import driver_config.DriverManager;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.BasePage;
 import pages.HomePage;
 import pages.LoginPage;
 
-public class TC_001 extends DriverManager {
+public class TC_001 extends BaseTest {
 
     @Test
     public void tc_001() {
 
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage();
         loginPage.enterUsername("Invalid Password");
         loginPage.enterPassword("Invalid Email");
         loginPage.login();
@@ -20,7 +21,7 @@ public class TC_001 extends DriverManager {
 
     @Test
     public void TC_002() {
-        HomePage homePage = new HomePage(driver);
+
 
 
     }

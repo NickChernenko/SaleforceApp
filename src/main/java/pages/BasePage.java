@@ -1,17 +1,14 @@
 package pages;
 
+import driver_config.DriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public abstract class BasePage {
-    public WebDriver driver;
 
 
-    protected BasePage() {
+    protected WebElement $(By by) {
 
+        return DriverManager.getDriver().findElement(by);
     }
-
-
-    protected abstract WebElement $(By by);
 }
