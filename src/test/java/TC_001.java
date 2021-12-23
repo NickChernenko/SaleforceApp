@@ -1,9 +1,15 @@
-import driver_config.DriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.BasePage;
-import pages.HomePage;
 import pages.LoginPage;
+import properties_reader.PropertyReader;
+
+import java.io.IOException;
+import java.time.Duration;
 
 public class TC_001 extends BaseTest {
 
@@ -11,6 +17,7 @@ public class TC_001 extends BaseTest {
     public void tc_001() {
 
         LoginPage loginPage = new LoginPage();
+
         loginPage.enterUsername("Invalid Password");
         loginPage.enterPassword("Invalid Email");
         loginPage.login();
@@ -20,7 +27,11 @@ public class TC_001 extends BaseTest {
     }
 
     @Test
-    public void TC_002() {
+    public void tc_002() throws IOException {
+
+        LoginPage loginPage = new LoginPage();
+        loginPage.enterUsername(PropertyReader.appConfigReader("app_userName"));
+        loginPage.enterUsername(PropertyReader.appConfigReader("app_password"));
 
 
 

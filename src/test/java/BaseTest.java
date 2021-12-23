@@ -1,27 +1,21 @@
 import driver_config.DriverManager;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import properties_reader.PropertyReader;
 
-import java.io.IOException;
-
-public class BaseTest extends DriverManager {
+public class BaseTest {
 
     @BeforeMethod
-    public static void setupClass() throws IOException {
+    public static void setupClass() {
 
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.get(PropertyReader.appConfigReader("Application_URL"));
+
+        DriverManager.getDriver().get("https://test.salesforce.com/");
 
 
     }
 
     @AfterMethod
     public void closeBrowser() {
+        DriverManager.getDriver().quit();
 
-        driver.quit();
     }
 }

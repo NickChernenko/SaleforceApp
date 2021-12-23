@@ -2,17 +2,15 @@ package pages;
 
 import org.openqa.selenium.By;
 
+import java.io.IOException;
+
 public class HomePage extends BasePage {
 
-    private static By profileTab = By.xpath("//img[@title='User']");
+    private final By profileTab = By.xpath("//img[@title='User']");
 
 
-    public boolean loggedIn() {
-        if ($(profileTab).isDisplayed()) {
-            return true;
-        } else {
-            return false;
-        }
+    public boolean loggedIn() throws IOException {
+        return $(profileTab).isDisplayed();
     }
 
 

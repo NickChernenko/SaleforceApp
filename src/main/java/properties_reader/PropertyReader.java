@@ -18,4 +18,5 @@ public class PropertyReader {
 
         return properties.get(key).toString();
     }
+
 }

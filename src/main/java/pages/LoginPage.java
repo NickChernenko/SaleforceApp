@@ -12,14 +12,13 @@ public class LoginPage extends BasePage {
     private final By loginError = By.xpath(("//*[text()[contains(.,'Please ')]]"));
 
 
+    public void enterUsername(String s) {
+        $(username).sendKeys(s);
+    }
+
     public void enterPassword(String s) {
         $(password).sendKeys(s);
 
-    }
-
-
-    public void enterUsername(String s) {
-        $(username).sendKeys(s);
     }
 
 
