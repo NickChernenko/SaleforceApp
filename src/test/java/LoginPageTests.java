@@ -12,10 +12,10 @@ public class LoginPageTests extends BaseTest {
     public void tc_001() {
 
         LoginPage loginPage = new LoginPage();
+        loginPage.enterUsername("Invalid Password").
+                enterPassword("Invalid Email").
+                submitLogin();
 
-        loginPage.enterUsername("Invalid Password");
-        loginPage.enterPassword("Invalid Email");
-        loginPage.login();
         String error = loginPage.getLoginErrorText();
         Assert.assertEquals(error, "Please check your username and password. If you still can't log in, contact your Salesforce administrator.");
 
@@ -23,15 +23,16 @@ public class LoginPageTests extends BaseTest {
 
 
     @Test
-    public void tc_002() throws IOException{
+    public void tc_002() throws IOException {
 
         LoginPage loginPage = new LoginPage();
 
-        loginPage.enterUsername(PropertyReader.appConfigReader("app_userName"));
-        loginPage.enterPassword(PropertyReader.appConfigReader("app_password"));
-        loginPage.login();
-        boolean successfulLogin = HomePage.loggedIn();
-        Assert.assertTrue(successfulLogin);
+        loginPage.enterUsername(PropertyReader.propertyReader("app_userName")).
+                enterPassword(PropertyReader.propertyReader("app_password")).
+                submitLogin();
+
+        boolean isLoginSuccessful = HomePage.isLoginSuccessful();
+        Assert.assertTrue(isLoginSuccessful);
 
 
     }

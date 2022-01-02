@@ -8,7 +8,7 @@ import java.util.Properties;
 public class PropertyReader {
 
 
-    public static String appConfigReader(String key) throws IOException {
+    public static String propertyReader(String key) throws IOException {
 
         File f = new File("src/application_properties/app_config.properties");
         Properties properties;
@@ -18,5 +18,4 @@ public class PropertyReader {
 
         return properties.get(key).toString();
     }
-
 }
