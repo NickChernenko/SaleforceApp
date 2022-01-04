@@ -1,6 +1,7 @@
-package pages;
+package pages.dashboard;
 
 import org.openqa.selenium.By;
+import pages.BasePage;
 
 import java.util.List;
 
