@@ -1,22 +1,10 @@
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
-import properties_reader.PropertyReader;
 
-public class HomePageTests extends BaseTest {
+public class HomePageTests extends BaseLoggedInTest {
 
     private LoginPage loginPage = new LoginPage();
-
-    @BeforeMethod
-    public void beforeMethod() {
-
-
-        loginPage.performLogin(PropertyReader.propertyReader("app_userName"),
-                PropertyReader.propertyReader("app_password"));
-
-
-    }
 
 
     @Test

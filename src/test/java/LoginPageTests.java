@@ -4,8 +4,6 @@ import pages.HomePage;
 import pages.LoginPage;
 import properties_reader.PropertyReader;
 
-import java.io.IOException;
-
 public class LoginPageTests extends BaseTest {
 
     @Test
@@ -23,7 +21,7 @@ public class LoginPageTests extends BaseTest {
 
 
     @Test
-    public void tc_002() throws IOException {
+    public void tc_002() {
 
         LoginPage loginPage = new LoginPage();
 
