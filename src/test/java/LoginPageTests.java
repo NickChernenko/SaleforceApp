@@ -14,7 +14,7 @@ public class LoginPageTests extends BaseTest {
         LoginPage loginPage = new LoginPage();
         loginPage.enterUsername("Invalid Password").
                 enterPassword("Invalid Email").
-                submitLogin();
+                clickLogin();
 
         String error = loginPage.getLoginErrorText();
         Assert.assertEquals(error, "Please check your username and password. If you still can't log in, contact your Salesforce administrator.");
@@ -29,7 +29,7 @@ public class LoginPageTests extends BaseTest {
 
         loginPage.enterUsername(PropertyReader.propertyReader("app_userName")).
                 enterPassword(PropertyReader.propertyReader("app_password")).
-                submitLogin();
+                clickLogin();
 
         boolean isLoginSuccessful = HomePage.isLoginSuccessful();
         Assert.assertTrue(isLoginSuccessful);

@@ -25,7 +25,7 @@ public class LoginPage extends BasePage {
     }
 
 
-    public HomePage submitLogin() {
+    public HomePage clickLogin() {
 
         $(loginButton).click();
         return new HomePage();
@@ -37,5 +37,12 @@ public class LoginPage extends BasePage {
         return $(loginError).getText();
     }
 
+    public void performLogin(String username, String password) {
+        enterUsername(username)
+                .enterPassword(password)
+                .clickLogin();
+
+
+    }
 
 }

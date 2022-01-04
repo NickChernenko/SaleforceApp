@@ -1,33 +1,29 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 import properties_reader.PropertyReader;
 
-import java.io.IOException;
-
 public class HomePageTests extends BaseTest {
 
+    private LoginPage loginPage = new LoginPage();
 
     @BeforeMethod
-    public void login() {
-        LoginPage loginPage = new LoginPage();
+    public void beforeMethod() {
 
-        try {
-            loginPage.enterUsername(PropertyReader.propertyReader("app_userName")).
-                    enterPassword(PropertyReader.propertyReader("app_password")).submitLogin();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        loginPage.performLogin(PropertyReader.propertyReader("app_userName"),
+                PropertyReader.propertyReader("app_password"));
+
+
     }
+
 
     @Test
     public void tc_001() {
         HomePage homePage = new HomePage();
-        homePage.openAppMenu().viewAllApp().getElement();
 
+        homePage.openAppMenu().viewAllApp().getElement();
 
 
     }
