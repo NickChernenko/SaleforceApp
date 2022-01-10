@@ -10,7 +10,8 @@ public class LoginPage extends BasePage {
     private final By password = By.id("password");
     private final By loginButton = By.name("Login");
     private final By loginError = By.xpath("//*[text()[contains(.,'Please ')]]");
-
+    private final By forgotPasswordLink = By.id("forgot_password_link");
+    private final By forgotPasswordHeader = By.xpath("//h2[text()='Forgot Your Password']");
 
     public LoginPage enterUsername(String s) {
 
@@ -43,6 +44,13 @@ public class LoginPage extends BasePage {
                 .clickLogin();
 
 
+    }
+    public LoginPage goToForgotPasswordPage(){
+        $(forgotPasswordLink).click();
+    return this;
+    }
+    public String getForgotPasswordHeaderText(){
+        return $(forgotPasswordHeader).getText();
     }
 
 }

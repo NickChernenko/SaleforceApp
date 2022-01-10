@@ -7,7 +7,7 @@ import properties_reader.PropertyReader;
 public class LoginPageTests extends BaseTest {
 
     @Test
-    public void tc_001() {
+    public void verify_that_login_error_massage_is_appear() {
 
         LoginPage loginPage = new LoginPage();
         loginPage.enterUsername("Invalid Password").
@@ -21,10 +21,9 @@ public class LoginPageTests extends BaseTest {
 
 
     @Test
-    public void tc_002() {
+    public void verify_successful_login() {
 
         LoginPage loginPage = new LoginPage();
-
         loginPage.enterUsername(PropertyReader.propertyReader("app_userName")).
                 enterPassword(PropertyReader.propertyReader("app_password")).
                 clickLogin();
@@ -34,5 +33,15 @@ public class LoginPageTests extends BaseTest {
 
 
     }
+
+    @Test
+    public void forgot_password_page_is_appear() {
+        
+        LoginPage loginPage = new LoginPage();
+
+        String forgotPasswordHeaderText = loginPage.goToForgotPasswordPage().getForgotPasswordHeaderText();
+        Assert.assertEquals(forgotPasswordHeaderText, "Forgot Your Password");
+    }
+
 
 }
